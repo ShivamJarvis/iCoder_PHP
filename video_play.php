@@ -24,10 +24,7 @@
 
     <style>
         
-        *{
-            overflow-x:hidden;
-
-        }
+        
 
         .comment-section h2
         {
@@ -41,6 +38,12 @@
             overflow-x: hidden;
             overflow-y: scroll;
 
+        }
+
+        .comment-box{
+            height:300px;
+            width:730px;
+            overflow-y:scroll;
         }
     
         .list1 {
@@ -58,34 +61,22 @@
 
         a:hover {
             text-decoration: none;
-            color: #ffffff;
+            color: rgb(15, 150, 204);
         }
 
         
 
-        /* .active-side-bar {
-            background-color: rgb(15, 150, 204);
-            width: 100%;
-            height: 100%;
-            color: rgb(255, 255, 255);
-        } */
-
-        /* .hoving:hover {
-            background-color: rgb(15, 150, 204);
-            width: 100%;
-            height: 100%;
-            color: rgb(255, 255, 255);
-        } */
-
+       
         .video-title {
             margin-top: 60px;
             overflow-y: hidden;
         }
-
+        body{
+            overflow-x:hidden;
+        }
         iframe {
             width: 800px;
             height: 450px;
-
             margin-top: 15px;
         }
 
@@ -134,7 +125,7 @@
     
                     while($row = mysqli_fetch_assoc($result))
                     {
-                       echo '<li class=" mb-2 ">
+                       echo '<li class=" mb-2 activehover">
                             <a href="?catID='.$cat.'&catName='.$catName.'&videoID='.$row['Sno'].'">'.$row['Name'].'</a>
                         </li>';
                     }
@@ -153,8 +144,8 @@
                     $vidDetails = mysqli_fetch_assoc($vid_result);
                     
 
-        echo '<div class="col-12 col-sm-6 col-md-8 main-content">
-            <h1 class="video-title">'.$vidDetails['Sno'].'. '.$vidDetails['Name'].'</h1>
+        echo '<div class=" col-md-8 main-content">
+            <h1 class="video-title text text-info">'.$vidDetails['Sno'].'. '.$vidDetails['Name'].'</h1>
 
             <div class="video-frame">
                 <iframe width="560" height="315" src="'.$vidDetails['Link'].'" frameborder="0"
@@ -205,7 +196,7 @@
             </div>';
 
             ?>
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center" style="margin-left:215px;">
         
             <?php
             
@@ -243,7 +234,7 @@
     <button type='submit' class="btn btn-info" >Post</button>
     </form>
   </div>
-    <div class="container mt-3" style="margin-left:275px">
+    <div class="container mt-3 comment-box border border-info" style="margin-left:425px">
 <?php 
     
     $sql = "SELECT * FROM comments WHERE `catID`= $cat;";
@@ -256,9 +247,7 @@
          echo '<div class="media col-md-8 my-3">
             <img class="mr-3" src="photos/user-png.png" style="width:50px;" alt="Generic placeholder image">
             <div class="media-body">
-                <h5 class="mt-0">'.$row['user'].'</h5>
-                '.$row['comment_content'].' <br>
-                <small>commented date : '.$row['date'].'</small>
+<h5 class="mt-0">'.$row['user'].'</h5><pre>'.$row['comment_content'].' <br><small>comment date : '.$row['date'].'</small></pre>
             </div>
         </div>
    ';
@@ -266,7 +255,7 @@
     }
     else
     {
-        echo '<hr><h2>No comments to show</h2>';
+        echo '<h2 class="mt-3 text text-danger text-center"><u>No comments to show</u></h2>';
     }
 ?>
  </div>

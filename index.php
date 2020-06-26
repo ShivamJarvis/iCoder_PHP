@@ -111,31 +111,31 @@
         <div class="card">
           
           <div class="card-body">
-            <h5 class="card-title">Blog Title</h5>
-            <p class="card-text">Blog data.</p>
+            <h5 class="card-title">Java Blogs</h5>
+            <p class="card-text">In this section you found Java blogs. I hope you like it.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary bt-lg">Read More...</a>
+            <a href="Blog.php?blog_id=1" class="btn btn-primary bt-lg">Read Now</a>
           </div>
         </div>
         <div class="card">
           
           <div class="card-body">
-            <h5 class="card-title">Blog title</h5>
-            <p class="card-text">Blog Data.</p>
+            <h5 class="card-title">Web Designing Blogs</h5>
+            <p class="card-text">In this is section you found blogs on web desigining. Here I cover all the type of backend and frontend used for desigining websites</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary bt-lg">Read More...</a>
+            <a href="Blog.php?blog_id=2" class="btn btn-primary bt-lg">Read Now</a>
           </div>
         </div>
         <div class="card">
           
           <div class="card-body">
-            <h5 class="card-title">Blog title</h5>
-            <p class="card-text">Blog data.</p>
+            <h5 class="card-title">Python Blogs</h5>
+            <p class="card-text">In this Section you found Python Blogs. I hope you like it.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary bt-lg">Read More...</a>
+            <a href="Blog.php?blog_id=3" class="btn btn-primary bt-lg">Read Now</a>
           </div>
         </div>
       </div>
