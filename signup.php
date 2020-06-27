@@ -51,6 +51,16 @@
   <?php 
   require "partials/_nav.php" ;
   require "partials/_dbconnect.php";
+  if($_SESSION)
+  {
+    header("location: index.php");
+    exit;
+  }
+  
+
+
+
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     $f_name = $_POST['fname'];

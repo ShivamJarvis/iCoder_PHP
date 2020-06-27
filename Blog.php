@@ -1,4 +1,10 @@
+<?php
+ require "partials/_dbconnect.php";
+ 
+ 
 
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -105,7 +111,14 @@
 <body>
 
 <?php
- require "partials/_nav.php"; ?>
+ require "partials/_nav.php"; 
+ if((!$_SESSION))
+{
+    header("location: login.php");
+    exit;
+}
+ 
+ ?>
     <div class="row no-gutters">
         <div class="col-6 col-md-4">
             <div class="side-nav1" id="side-nav1">
@@ -113,13 +126,19 @@
                     <ol>
                     
                     
-    
-                 
-                       <li class=" mb-2 activehover">
-                            <a href="?catID='.$cat.'&catName='.$catName.'&videoID='.$row['Sno'].'">'.$row['Name'].'</a>
-                        </li>
-                    
-                      
+    <?php
+        
+        $blog = $_GET['blogNo'];
+        // $blog_no = $_GET['bno'];
+        $sql = "SELECT * FROM `Python_Blogs`;";
+                 $search_blogid = mysqli_query($conn,$sql);
+                 while(($row=mysqli_fetch_assoc($search_blogid)))
+                 {
+                echo '<li class=" mb-2 activehover">
+                            <a href="?blogNo='.$row['Sno'].'">'.$row['Title'].'</a>
+                        </li>';
+                 }
+                      ?>
                     </ol>
                 </div>
 
@@ -127,68 +146,84 @@
         </div>
 
                    
+                    <?php
+                    $blog = $_GET['blogNo'];
+                 
+                    $sql = "SELECT * FROM `Python_Blogs` WHERE `Sno` = '$blog';";
+                    $blog_result = mysqli_query($conn,$sql);
+                    $blogDetails = mysqli_fetch_assoc($blog_result);
                     
-                    $video = $_GET['videoID'];
-                    $sql = "SELECT * FROM `$catName` WHERE Sno = '$video';";
-                    $vid_result = mysqli_query($conn,$sql);
-                    $vidDetails = mysqli_fetch_assoc($vid_result);
-                    
 
-       <div class=" col-md-8 main-content">
-            <h1 class="video-title text text-info">'.$vidDetails['Sno'].'. '.$vidDetails['Name'].'</h1>
-
-            <div class="video-frame">
-                <iframe width="560" height="315" src="'.$vidDetails['Link'].'" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-
-            <div class="desc-code-area mt-3">
-
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#desc"
-                                    aria-expanded="true" aria-controls="collapseOne">
-                                    Description
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="desc" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">'.
-                               $vidDetails['Description'].'
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#code"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                Code
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="code" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                               '.$vidDetails['code'].'
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
+     echo  '<div class=" col-md-8 main-content">
+            <h1 class="video-title text text-info mb-3"><u>'.$blogDetails['Title'].'</u></h1>
+                 
+            <div class="video-frame" style="margin-right:50px;">
+                 '.$blogDetails['Content'].'
+                 <br>
+                 <h5 class="text-right mt-3"><u>By iCoder</u></h5>
+            </div>';
+            ?>
                 </div>
             </div>
+            <div class="container d-flex justify-content-center" style="margin-left:215px; ">
+            <?php
+            require "partials/_dbconnect.php";
+
+            $blog = $_GET['blogNo'];
+           
+            $user = $_SESSION['username'];
+
+                 if($_SERVER['REQUEST_METHOD']=='POST')
+                 {
+                     $content = $_POST['comment'];
+                 $sql = "INSERT INTO `Blog-Comments` (`User`, `Content`,`Blog_No`, `Date`) VALUES ('$user', '$content','$blog', current_timestamp());";
+
+                 $insert_data = mysqli_query($conn,$sql);
+           
+
+                 }
+
+
+
+        echo '
+        <form class="col-md-8" action="/iCoder/Blog.php?blogNo='.$blog.'"  method="post">'
+            ?>
+                <h2>Post Your Comment</h2>
+                <hr>
+        <div class="form-group">
+        <label for="comment">Type your comment here:</label>
+        <textarea class="form-control" id="comment"
+    rows="3" name="comment"></textarea>
+    </div>
+    <button type='submit' class="btn btn-info" >Post</button>
+    </form>
+  </div>
+    <div class="container mt-3 comment-box border border-info" style="margin-left:425px">
+<?php 
+    $blog = $_GET['blogNo'];
+ 
+    $sql = "SELECT * FROM `Blog-Comments` WHERE `Blog_No`=$blog;";
+    $fetch_comment = mysqli_query($conn,$sql);
+    $num = mysqli_num_rows($fetch_comment);
+    if($num>0)
+    {
+        while(($row=mysqli_fetch_assoc($fetch_comment)))
+        {
+         echo '<div class="media col-md-8 my-3">
+            <img class="mr-3" src="photos/user-png.png" style="width:50px;" alt="Generic placeholder image">
+            <div class="media-body">
+<h5 class="mt-0">'.$row['User'].'</h5><pre>'.$row['Content'].' <br><small>comment date : '.$row['Date'].'</small></pre>
             </div>
-
-    <div class="container d-flex justify-content-center" style="margin-left:215px;">
-        
-            
-
+        </div>
+   ';
+        }
+    }
+    else
+    {
+        echo '<h2 class="mt-3 text text-danger text-center"><u>No comments to show</u></h2>';
+    }
+?>
+ </div>
 
 <?php require "partials/_footer.php"; ?>
 

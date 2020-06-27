@@ -15,7 +15,7 @@ if(($_SESSION) && ($_SESSION['username']!="admin"))
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Blog.php">Blog</a>
+          <a class="nav-link" href="Blog.php?blogNo=1">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="videos.php">Videos</a>
@@ -61,7 +61,7 @@ elseif(($_SESSION) && ($_SESSION['username']=="admin"))
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="Blog.php">Blog</a>
+          <a class="nav-link" href="Blog.php?blogNo=1">Blog</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="videos.php">Videos</a>
@@ -113,7 +113,7 @@ else
         <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Blog.php">Blog</a>
+        <a class="nav-link" href="Blog.php?blogNo=1">Blog</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="videos.php">Videos</a>

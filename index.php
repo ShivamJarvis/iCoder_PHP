@@ -98,7 +98,7 @@
       <img src="photos/myAvatar.png" class="jumb-pic mb-4" alt="">
       <h1 class="typed text-success jumbotron-heading mb-5"><span id="typed"></span></h1>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="Blog.php" role="button">Browse Blogs</a>
+        <a class="btn btn-primary btn-lg" href="Blog.php?blogNo=1" role="button">Browse Blogs</a>
         <a class="btn btn-success btn-lg" href="videos.php" role="button">Browse Videos</a>
       </p>
     </div>
@@ -107,40 +107,7 @@
 
 
 
-      <div class="card-deck">
-        <div class="card">
-          
-          <div class="card-body">
-            <h5 class="card-title">Java Blogs</h5>
-            <p class="card-text">In this section you found Java blogs. I hope you like it.</p>
-          </div>
-          <div class="card-footer">
-            <a href="Blog.php?blog_id=1" class="btn btn-primary bt-lg">Read Now</a>
-          </div>
-        </div>
-        <div class="card">
-          
-          <div class="card-body">
-            <h5 class="card-title">Web Designing Blogs</h5>
-            <p class="card-text">In this is section you found blogs on web desigining. Here I cover all the type of backend and frontend used for desigining websites</p>
-          </div>
-          <div class="card-footer">
-            <a href="Blog.php?blog_id=2" class="btn btn-primary bt-lg">Read Now</a>
-          </div>
-        </div>
-        <div class="card">
-          
-          <div class="card-body">
-            <h5 class="card-title">Python Blogs</h5>
-            <p class="card-text">In this Section you found Python Blogs. I hope you like it.</p>
-          </div>
-          <div class="card-footer">
-            <a href="Blog.php?blog_id=3" class="btn btn-primary bt-lg">Read Now</a>
-          </div>
-        </div>
-      </div>
-
-
+      
 
 
 
