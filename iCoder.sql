@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2020 at 03:29 PM
+-- Generation Time: Jun 27, 2020 at 08:46 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `iCoder`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Blog-Comments`
+--
+
+CREATE TABLE `Blog-Comments` (
+  `Sno` int(3) NOT NULL,
+  `User` varchar(200) NOT NULL,
+  `Content` text NOT NULL,
+  `Blog_No` int(11) NOT NULL,
+  `Date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Blog-Comments`
+--
+
+INSERT INTO `Blog-Comments` (`Sno`, `User`, `Content`, `Blog_No`, `Date`) VALUES
+(1, 'admin', 'This is awesome blog', 1, '2020-06-27 10:28:25'),
+(2, 'Jarvis', 'This is best blog in the world', 1, '2020-06-27 10:36:37'),
+(3, 'admin', 'This is Django Blog', 3, '2020-06-27 10:39:31'),
+(4, 'admin', 'This is php blog', 2, '2020-06-27 10:40:03'),
+(5, 'admin', 'hello', 1, '2020-06-27 10:40:41'),
+(6, 'admin', 'Hello I am Admin work on python blogs', 2, '2020-06-27 11:27:22'),
+(7, 'admin', 'This is my python blog', 1, '2020-06-27 11:32:12');
 
 -- --------------------------------------------------------
 
@@ -55,6 +82,7 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `comment_content` text NOT NULL,
   `catID` int(11) NOT NULL,
+  `videoID` int(11) NOT NULL,
   `user` varchar(100) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -63,8 +91,10 @@ CREATE TABLE `comments` (
 -- Dumping data for table `comments`
 --
 
-INSERT INTO `comments` (`comment_id`, `comment_content`, `catID`, `user`, `date`) VALUES
-(9, 'hey', 1, 'admin1', '2020-06-26 18:55:17');
+INSERT INTO `comments` (`comment_id`, `comment_content`, `catID`, `videoID`, `user`, `date`) VALUES
+(22, 'is python great', 1, 1, 'admin', '2020-06-27 11:45:19'),
+(23, 'python is wonderful language\r\n', 1, 1, 'admin', '2020-06-27 12:12:35'),
+(24, 'this is list tutorial', 1, 2, 'admin', '2020-06-27 12:12:50');
 
 -- --------------------------------------------------------
 
@@ -130,6 +160,27 @@ INSERT INTO `Python-Programming-Tutorials` (`Sno`, `Name`, `Link`, `Description`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Python_Blogs`
+--
+
+CREATE TABLE `Python_Blogs` (
+  `Sno` int(11) NOT NULL,
+  `Title` text NOT NULL,
+  `Content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `Python_Blogs`
+--
+
+INSERT INTO `Python_Blogs` (`Sno`, `Title`, `Content`) VALUES
+(1, '2020 Python Software Foundation Board of Directors Election Results', 'The 2020 Python Software Foundation Board of Directors election has concluded.\r\nOf 1,151 eligible voting members, 462 ballots were cast. This surpasses the necessary 1/3 quorum.\r\nThe four top votegetters via approval voting are:\r\nNina Zakharenko\r\nDustin Ingram\r\nJeff Triplett\r\nThomas Wouters\r\nThey will serve a three year term on the board.\r\nNo ties were necessary to break.\r\nThe full result is visible to elligible voters at https://vote.heliosvoting.org/helios/e/psf-board-2020 using the same credentials as their ballot.\r\nThe Python Software Foundation thanks all the nominees, voting members, and the newly elected directors! The long term viability of our community relies on participation of our global membership.\r\nIf you would like to participate as a voter in the next election join as a Supporting, Contributing, or Managing member today! You can read more about the different classes at on python.org.'),
+(2, 'About PHP', '<pre>Introduction\r\nThe PHP 4 documentation was removed from the PHP Manual in August 2014, approximately six years after PHP 4 reached its end of life. However, we have provided downloadable copies of the manual for anyone who would need it.\r\n\r\nPHP 4 Manual\r\nAn attempt has been made to preserve as much documentation related to PHP 4, as possible. Despite this, we don\'t have a nice, separate manual covering only PHP 4. The reason for this is how our documentation is structured. Even so, the archived copy describes more aspects of PHP 4 than actual manual described in August 2014 (e.g. it covers more PHP 4 extensions).</pre>'),
+(3, 'Django Framework', 'Django (/ˈdʒæŋɡoʊ/ JANG-goh; stylised as django)[4] is a Python-based free and open-source web framework that follows the model-template-view (MVC) architectural pattern.[5][6] It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.\r\n\r\nDjango\'s primary goal is to ease the creation of complex, database-driven websites. The framework emphasizes reusability and \"pluggability\" of components, less code, low coupling, rapid development, and the principle of don\'t repeat yourself.[7] Python is used throughout, even for settings files and data models. Django also provides an optional administrative create, read, update and delete interfa');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `User`
 --
 
@@ -148,7 +199,7 @@ CREATE TABLE `User` (
 --
 
 INSERT INTO `User` (`ID`, `F_Name`, `L_Name`, `Username`, `Email`, `Password`, `Date`) VALUES
-(5, 'iCoder', '', 'admin1', 'guyscommerce@gmail.com', '$2y$10$zZVvDltSr5QIm4jncrswx.q2ZYm/A6laa6QsN9nYDxkIjyrWeQZAS', '2020-06-26 08:12:37'),
+(5, 'iCoder', '', 'admin', 'guyscommerce@gmail.com', '$2y$10$zZVvDltSr5QIm4jncrswx.q2ZYm/A6laa6QsN9nYDxkIjyrWeQZAS', '2020-06-26 08:12:37'),
 (6, 'Shivam', 'Gupta', 'jarvis', 'sg330415@gmail.com', '$2y$10$9T0WgM7wxy33hOLtwvRaTePv5B7AWu5/QLyvWwg.dY8qTXQqxY4nS', '2020-06-26 15:35:40');
 
 -- --------------------------------------------------------
@@ -177,6 +228,12 @@ INSERT INTO `Video_Head` (`ID`, `Topic`, `Description`, `Photo`, `Date`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Blog-Comments`
+--
+ALTER TABLE `Blog-Comments`
+  ADD PRIMARY KEY (`Sno`);
 
 --
 -- Indexes for table `C-Language-Tutorials`
@@ -209,6 +266,12 @@ ALTER TABLE `Python-Programming-Tutorials`
   ADD PRIMARY KEY (`Sno`);
 
 --
+-- Indexes for table `Python_Blogs`
+--
+ALTER TABLE `Python_Blogs`
+  ADD PRIMARY KEY (`Sno`);
+
+--
 -- Indexes for table `User`
 --
 ALTER TABLE `User`
@@ -227,6 +290,12 @@ ALTER TABLE `Video_Head`
 --
 
 --
+-- AUTO_INCREMENT for table `Blog-Comments`
+--
+ALTER TABLE `Blog-Comments`
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `C-Language-Tutorials`
 --
 ALTER TABLE `C-Language-Tutorials`
@@ -236,7 +305,7 @@ ALTER TABLE `C-Language-Tutorials`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `Contact`
@@ -255,6 +324,12 @@ ALTER TABLE `Javascripts-Tutorials`
 --
 ALTER TABLE `Python-Programming-Tutorials`
   MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `Python_Blogs`
+--
+ALTER TABLE `Python_Blogs`
+  MODIFY `Sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `User`

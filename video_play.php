@@ -199,14 +199,14 @@
     <div class="container d-flex justify-content-center" style="margin-left:215px;">
         
             <?php
-            
+            $vid_id = $_GET['videoID'];
             if($_SERVER['REQUEST_METHOD']=='POST')
             {
                 if(($_SESSION))
                 {
                 $user = $_SESSION['username'];
                 $comment = $_POST['comment'];
-                $sql = "INSERT INTO `comments` (`comment_content`, `catID`,`user`,`date`) VALUES ('$comment', '$cat','$user', current_timestamp());";
+                $sql = "INSERT INTO `comments` (`comment_content`, `catID`,`videoID`,`user`,`date`) VALUES ('$comment', '$cat','$vid_id','$user', current_timestamp());";
                 $add_comment = mysqli_query($conn,$sql);
                 }
                 else
@@ -236,8 +236,10 @@
   </div>
     <div class="container mt-3 comment-box border border-info" style="margin-left:425px">
 <?php 
+
+            $vid_id = $_GET['videoID'];
     
-    $sql = "SELECT * FROM comments WHERE `catID`= $cat;";
+    $sql = "SELECT * FROM comments WHERE `catID`= $cat AND `videoID`= $vid_id;";
     $fetch_comment = mysqli_query($conn,$sql);
     $num = mysqli_num_rows($fetch_comment);
     if($num>0)
