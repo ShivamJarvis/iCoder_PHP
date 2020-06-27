@@ -105,6 +105,22 @@
 </div>
   </div>
 </div>
+
+
+<div class="col">
+  <div class="col mb-3">
+  <div class="card border border-info" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Add New Blog</h5>
+    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+    <p class="card-text">Here Add New Blog for Python.</p>
+
+    <a href="add_blogs.php" class="card-link btn btn-info">Add Blog</a>
+  </div>
+</div>
+  </div>
+  </div>
+
 </div>
 </div>
 

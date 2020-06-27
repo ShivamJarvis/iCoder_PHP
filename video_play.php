@@ -239,7 +239,7 @@
 
             $vid_id = $_GET['videoID'];
     
-    $sql = "SELECT * FROM comments WHERE `catID`= $cat AND `videoID`= $vid_id;";
+    $sql = "SELECT * FROM comments WHERE `catID`= $cat AND `videoID`= $vid_id ORDER BY `comment_id` DESC";
     $fetch_comment = mysqli_query($conn,$sql);
     $num = mysqli_num_rows($fetch_comment);
     if($num>0)

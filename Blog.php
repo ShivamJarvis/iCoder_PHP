@@ -112,11 +112,7 @@
 
 <?php
  require "partials/_nav.php"; 
- if((!$_SESSION))
-{
-    header("location: login.php");
-    exit;
-}
+ 
  
  ?>
     <div class="row no-gutters">
@@ -156,11 +152,11 @@
 
      echo  '<div class=" col-md-8 main-content">
             <h1 class="video-title text text-info mb-3"><u>'.$blogDetails['Title'].'</u></h1>
-                 
+                 <img src="photos/python.jpg" class="my-4"  style="width:400px; margin-left:190px">
             <div class="video-frame" style="margin-right:50px;">
                  '.$blogDetails['Content'].'
                  <br>
-                 <h5 class="text-right mt-3"><u>By iCoder</u></h5>
+                 <h5 class="text-right mt-3"><u>By iCoder on '.$blogDetails['Date'].'</u></h5>
             </div>';
             ?>
                 </div>
@@ -171,14 +167,23 @@
 
             $blog = $_GET['blogNo'];
            
-            $user = $_SESSION['username'];
+           
 
                  if($_SERVER['REQUEST_METHOD']=='POST')
                  {
-                     $content = $_POST['comment'];
-                 $sql = "INSERT INTO `Blog-Comments` (`User`, `Content`,`Blog_No`, `Date`) VALUES ('$user', '$content','$blog', current_timestamp());";
+                    if($_SESSION)
+                    {
+                    
+                        $user = $_SESSION['username'];
+                        $content = $_POST['comment'];
+                        $sql = "INSERT INTO `Blog-Comments` (`User`, `Content`,`Blog_No`, `Date`) VALUES ('$user', '$content','$blog', current_timestamp());";
+                        $insert_data = mysqli_query($conn,$sql);
+                    }
+                    else
+                    {
+                        echo '<script>alert("You must be logged in on this website");</script>';
 
-                 $insert_data = mysqli_query($conn,$sql);
+                    }
            
 
                  }
@@ -202,7 +207,7 @@
 <?php 
     $blog = $_GET['blogNo'];
  
-    $sql = "SELECT * FROM `Blog-Comments` WHERE `Blog_No`=$blog;";
+    $sql = "SELECT * FROM `Blog-Comments` WHERE `Blog_No`=$blog ORDER BY `Sno` DESC;";
     $fetch_comment = mysqli_query($conn,$sql);
     $num = mysqli_num_rows($fetch_comment);
     if($num>0)

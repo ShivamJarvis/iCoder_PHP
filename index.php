@@ -105,12 +105,50 @@
 
     <div class="container mb-5 mt-5">
 
+<div class="row">
+<div class="col">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top ml-4" src="photos/coding.png" style="width:200px" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Explore Videos</h5>
+    <p class="card-text">In this Section there are free videos for programming courses. I hope you like it. For supporting me please subscribe my youtube channel iCoder</p>
+    <a href="videos.php" class="btn btn-primary">Browse Videos</a>
+  </div>
+</div>
+</div>
 
 
-      
+
+<div class="col">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top ml-4" src="photos/blog.png" style="width:230px" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Explore Blogs</h5>
+    <p class="card-text">In this Section there are some blogs on python programming language wrote by me(iCoder). I hope you like it. </p>
+    <a href="Blog.php?blogNo=1" class="btn btn-primary">Browse Blogs</a>
+  </div>
+</div>
+</div>
 
 
 
+<div class="col">
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top ml-4" src="photos/call-png.png" style="width:264px" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Contact Me</h5>
+    <p class="card-text">You can contact me for your personal or business queries. </p>
+    <a href="Blog.php?blogNo=1" class="btn btn-primary">Browse Blogs</a>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
     </div>
 
 
