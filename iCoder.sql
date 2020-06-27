@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2020 at 08:46 AM
+-- Generation Time: Jun 27, 2020 at 10:38 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -46,7 +46,10 @@ INSERT INTO `Blog-Comments` (`Sno`, `User`, `Content`, `Blog_No`, `Date`) VALUES
 (4, 'admin', 'This is php blog', 2, '2020-06-27 10:40:03'),
 (5, 'admin', 'hello', 1, '2020-06-27 10:40:41'),
 (6, 'admin', 'Hello I am Admin work on python blogs', 2, '2020-06-27 11:27:22'),
-(7, 'admin', 'This is my python blog', 1, '2020-06-27 11:32:12');
+(7, 'admin', 'This is my python blog', 1, '2020-06-27 11:32:12'),
+(8, 'admin', 'hello mai hoo icoder', 1, '2020-06-27 13:01:18'),
+(9, 'admin', 'this is in descending order\r\n', 1, '2020-06-27 13:05:49'),
+(10, 'admin', 'This is great', 5, '2020-06-27 13:43:05');
 
 -- --------------------------------------------------------
 
@@ -94,7 +97,8 @@ CREATE TABLE `comments` (
 INSERT INTO `comments` (`comment_id`, `comment_content`, `catID`, `videoID`, `user`, `date`) VALUES
 (22, 'is python great', 1, 1, 'admin', '2020-06-27 11:45:19'),
 (23, 'python is wonderful language\r\n', 1, 1, 'admin', '2020-06-27 12:12:35'),
-(24, 'this is list tutorial', 1, 2, 'admin', '2020-06-27 12:12:50');
+(24, 'this is list tutorial', 1, 2, 'admin', '2020-06-27 12:12:50'),
+(25, 'is python wale there\r\n', 1, 1, 'admin', '2020-06-27 13:07:25');
 
 -- --------------------------------------------------------
 
@@ -166,17 +170,20 @@ INSERT INTO `Python-Programming-Tutorials` (`Sno`, `Name`, `Link`, `Description`
 CREATE TABLE `Python_Blogs` (
   `Sno` int(11) NOT NULL,
   `Title` text NOT NULL,
-  `Content` text NOT NULL
+  `Content` text NOT NULL,
+  `Date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `Python_Blogs`
 --
 
-INSERT INTO `Python_Blogs` (`Sno`, `Title`, `Content`) VALUES
-(1, '2020 Python Software Foundation Board of Directors Election Results', 'The 2020 Python Software Foundation Board of Directors election has concluded.\r\nOf 1,151 eligible voting members, 462 ballots were cast. This surpasses the necessary 1/3 quorum.\r\nThe four top votegetters via approval voting are:\r\nNina Zakharenko\r\nDustin Ingram\r\nJeff Triplett\r\nThomas Wouters\r\nThey will serve a three year term on the board.\r\nNo ties were necessary to break.\r\nThe full result is visible to elligible voters at https://vote.heliosvoting.org/helios/e/psf-board-2020 using the same credentials as their ballot.\r\nThe Python Software Foundation thanks all the nominees, voting members, and the newly elected directors! The long term viability of our community relies on participation of our global membership.\r\nIf you would like to participate as a voter in the next election join as a Supporting, Contributing, or Managing member today! You can read more about the different classes at on python.org.'),
-(2, 'About PHP', '<pre>Introduction\r\nThe PHP 4 documentation was removed from the PHP Manual in August 2014, approximately six years after PHP 4 reached its end of life. However, we have provided downloadable copies of the manual for anyone who would need it.\r\n\r\nPHP 4 Manual\r\nAn attempt has been made to preserve as much documentation related to PHP 4, as possible. Despite this, we don\'t have a nice, separate manual covering only PHP 4. The reason for this is how our documentation is structured. Even so, the archived copy describes more aspects of PHP 4 than actual manual described in August 2014 (e.g. it covers more PHP 4 extensions).</pre>'),
-(3, 'Django Framework', 'Django (/ˈdʒæŋɡoʊ/ JANG-goh; stylised as django)[4] is a Python-based free and open-source web framework that follows the model-template-view (MVC) architectural pattern.[5][6] It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.\r\n\r\nDjango\'s primary goal is to ease the creation of complex, database-driven websites. The framework emphasizes reusability and \"pluggability\" of components, less code, low coupling, rapid development, and the principle of don\'t repeat yourself.[7] Python is used throughout, even for settings files and data models. Django also provides an optional administrative create, read, update and delete interfa');
+INSERT INTO `Python_Blogs` (`Sno`, `Title`, `Content`, `Date`) VALUES
+(1, '2020 Python Software Foundation Board of Directors Election Results', 'The 2020 Python Software Foundation Board of Directors election has concluded.\r\nOf 1,151 eligible voting members, 462 ballots were cast. This surpasses the necessary 1/3 quorum.\r\nThe four top votegetters via approval voting are:\r\nNina Zakharenko\r\nDustin Ingram\r\nJeff Triplett\r\nThomas Wouters\r\nThey will serve a three year term on the board.\r\nNo ties were necessary to break.\r\nThe full result is visible to elligible voters at https://vote.heliosvoting.org/helios/e/psf-board-2020 using the same credentials as their ballot.\r\nThe Python Software Foundation thanks all the nominees, voting members, and the newly elected directors! The long term viability of our community relies on participation of our global membership.\r\nIf you would like to participate as a voter in the next election join as a Supporting, Contributing, or Managing member today! You can read more about the different classes at on python.org.', '2020-06-27 13:20:23'),
+(2, 'About PHP', '<pre>Introduction\r\nThe PHP 4 documentation was removed from the PHP Manual in August 2014, approximately six years after PHP 4 reached its end of life. However, we have provided downloadable copies of the manual for anyone who would need it.\r\n\r\nPHP 4 Manual\r\nAn attempt has been made to preserve as much documentation related to PHP 4, as possible. Despite this, we don\'t have a nice, separate manual covering only PHP 4. The reason for this is how our documentation is structured. Even so, the archived copy describes more aspects of PHP 4 than actual manual described in August 2014 (e.g. it covers more PHP 4 extensions).</pre>', '2020-06-27 13:20:23'),
+(3, 'Django Framework', 'Django (/ˈdʒæŋɡoʊ/ JANG-goh; stylised as django)[4] is a Python-based free and open-source web framework that follows the model-template-view (MVC) architectural pattern.[5][6] It is maintained by the Django Software Foundation (DSF), an American independent organization established as a 501(c)(3) non-profit.\r\n\r\nDjango\'s primary goal is to ease the creation of complex, database-driven websites. The framework emphasizes reusability and \"pluggability\" of components, less code, low coupling, rapid development, and the principle of don\'t repeat yourself.[7] Python is used throughout, even for settings files and data models. Django also provides an optional administrative create, read, update and delete interfa', '2020-06-27 13:20:23'),
+(4, 'Reporting Exceptions in Python Scripts with Sentry', 'Python scripts are the glue that keep many applications and their infrastructure running, but when one of your scripts throws an exception you may not know about it immediately unless you have a central place to aggregate the errors. That\'s where adding Sentry can solved this distributed error logging problem.\r\n\r\nIn this tutorial, we\'ll see how to quickly add Sentry to a new or existing Python script to report errors into a centralized location for further debugging.', '2020-06-27 13:29:57'),
+(5, 'An Example Script for Loading Python Modules', '<pre>\r\n\r\nimport argparse\r\n\r\ndef import_submodules(package):\r\n    return {}\r\n\r\n\r\nif __name__ == \"__main__\":\r\n    parser = argparse.ArgumentParser()\r\n    parser.add_argument(\"package\")\r\n    args = parser.parse_args()\r\n\r\n    package_to_load = args.package\r\n    results = import_submodules(package_to_load)\r\n    for r in results:\r\n        print(str(r))\r\n\r\n</pre>', '2020-06-27 13:41:34');
 
 -- --------------------------------------------------------
 
@@ -293,7 +300,7 @@ ALTER TABLE `Video_Head`
 -- AUTO_INCREMENT for table `Blog-Comments`
 --
 ALTER TABLE `Blog-Comments`
-  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `C-Language-Tutorials`
@@ -305,7 +312,7 @@ ALTER TABLE `C-Language-Tutorials`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `Contact`
@@ -329,7 +336,7 @@ ALTER TABLE `Python-Programming-Tutorials`
 -- AUTO_INCREMENT for table `Python_Blogs`
 --
 ALTER TABLE `Python_Blogs`
-  MODIFY `Sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Sno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `User`
