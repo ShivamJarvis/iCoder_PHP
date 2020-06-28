@@ -176,6 +176,9 @@
                     
                         $user = $_SESSION['username'];
                         $content = $_POST['comment'];
+                        $content = str_replace("<","&lt",$content);
+                        $content = str_replace(">","&gt",$content);
+
                         $sql = "INSERT INTO `Blog-Comments` (`User`, `Content`,`Blog_No`, `Date`) VALUES ('$user', '$content','$blog', current_timestamp());";
                         $insert_data = mysqli_query($conn,$sql);
                     }

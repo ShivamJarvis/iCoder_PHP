@@ -206,6 +206,8 @@
                 {
                 $user = $_SESSION['username'];
                 $comment = $_POST['comment'];
+                $comment = str_replace("<","&lt",$comment);
+                $comment = str_replace(">","&gt",$comment);
                 $sql = "INSERT INTO `comments` (`comment_content`, `catID`,`videoID`,`user`,`date`) VALUES ('$comment', '$cat','$vid_id','$user', current_timestamp());";
                 $add_comment = mysqli_query($conn,$sql);
                 }
